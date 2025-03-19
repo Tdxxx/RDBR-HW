@@ -1,0 +1,42 @@
+/* Filters Container */
+.filters {
+    display: flex;
+    justify-content: center; /* Center align the filters */
+    align-items: center;
+    gap: 1.5rem; /* Space between filters */
+    padding: 10px 20px;
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    background-color: white;
+    width: fit-content;
+    margin: 20px auto; /* Center the filters */
+    flex-wrap: wrap; /* Prevent breaking into a column on small screens */
+}
+
+/* Filter Item */
+.filter-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    cursor: pointer; /* Make it clear that it's clickable */
+}
+
+/* Dropdown Icon */
+.dropdown-icon {
+    width: 20px;
+    height: 20px;
+    fill: #8338EC;
+}
+
+/* Ensure select elements look good */
+.filter-content select {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+}

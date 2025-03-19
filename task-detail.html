@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Detail</title>
+    <link rel="stylesheet" href="./css/taskpage.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="header-content">
+          <div class="logo-container">
+           <a href="index.html"> <h1 class="logo-text">Momentum</h1></a> 
+            <img
+              src="./img/Hourglass.png"
+              alt="Momentum logo"
+              class="logo-image"
+            />
+            <div class="button-container">
+                <button id="btn-add-employee" class="btn1">თანამშრომლის შექმნა</button>
+                <a href="create-task.html">
+                    <button class="btn2">
+                        შექმენი ახალი დავალება
+                        <svg class="plus-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 1024 1024">
+                            <path fill="currentColor" d="M480 480V128a32 32 0 0 1 64 0v352h352a32 32 0 1 1 0 64H544v352a32 32 0 1 1-64 0V544H128a32 32 0 0 1 0-64z"/>
+                        </svg>
+                    </button>
+                </a>
+            </div>
+      </header>
+      
+      <main class="task-container">
+        <article class="task-details">
+          <section class="task-header">
+            <div class="task-badges">
+              <span class="priority-badge">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/14c4a3ef5b82af67ade17a6518c24a39deef7c6c?placeholderIfAbsent=true"
+                  alt="Priority icon"
+                  class="badge-icon"
+                />
+                <span class="badge-text">საშუალო</span>
+              </span>
+              <span class="category-badge">დიზაინი</span>
+            </div>
+            <h1 class="task-title">Redberry-ს საიტის ლენდინგის დიზაინი</h1>
+            <p class="task-description">
+              მიზანია რომ შეიქმნას თანამედროვე, სუფთა და ფუნქციონალური დიზაინი,
+              რომელიც უზრუნველყოფს მარტივ ნავიგაციას და მკაფიო ინფორმაციის გადაცემას.
+              დიზაინი უნდა იყოს ადაპტირებადი (responsive), გამორჩეული ვიზუალით,
+              მინიმალისტური სტილით და ნათელი ტიპოგრაფიით.
+            </p>
+          </section>
+      
+          <section class="task-metadata">
+            <h2 class="metadata-title">დავალების დეტალები</h2>
+            <div class="metadata-grid">
+              <div class="metadata-item">
+                <div class="metadata-label">
+                  <img
+                    src="./img/pie-chart.png"
+                    alt="Status icon"
+                    class="metadata-icon"
+                  />
+                  <span>სტატუსი</span>
+                </div>
+                <div class="status-selector">
+                  <span class="status-text">მზად ტესტირებისთვის</span>
+                  <div class="arrow-down"></div>
+                </div>
+              </div>
+      
+              <div class="metadata-item">
+                <div class="metadata-label">
+                  <div class="user-icon">
+                    <img
+                      src="./img/progile.png"
+                      alt="User icon top"
+                    />
+                    
+                  </div>
+                  <span>თანამშრომელი</span>
+                </div>
+                <div class="assignee-info">
+                  <span class="department">დიზაინის დეპარტამენტი</span>
+                  <div class="assignee">
+                    <img
+                      src="./img/avat-d.png"
+                      alt="Assignee avatar"
+                      class="avatar"
+                    />
+                    <span class="assignee-name">ელაია ბაგრატიონი</span>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="metadata-item">
+                <div class="metadata-label">
+                  <img
+                    src="./img/avat.png"
+                    alt="Calendar icon"
+                    class="metadata-icon"
+                  />
+                  <span>დავალების ვადა</span>
+                </div>
+                <span class="deadline">ორშ - 02/2/2025</span>
+              </div>
+            </div>
+          </section>
+        </article>
+      
+        <aside class="comments-section">
+          <section class="comment-form">
+            <h2 class="form-title">დაწერე კომენტარი</h2>
+            <div class="form-container">
+              <textarea class="comment-input"></textarea>
+              <button class="comment-button">დააკომენტარე</button>
+            </div>
+          </section>
+      
+          <section class="comments-list">
+            <div class="comments-header">
+              <h2 class="comments-title">კომენტარები</h2>
+              <span class="comments-count">3</span>
+            </div>
+      
+            <div class="comment">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/488ae730c766a5fccdd4a79902dab10f83e89646?placeholderIfAbsent=true"
+                alt="Emilia Morgan"
+                class="comment-avatar"
+              />
+              <div class="comment-content">
+                <div class="comment-body">
+                  <h3 class="comment-author">ემილია მორგანი</h3>
+                  <p class="comment-text">
+                    დიზაინი სუფთად ჩანს, მაგრამ კოდირებისას მნიშვნელოვანი იქნება, რომ
+                    ელემენტებს ჰქონდეს შესაბამისი რეზოლუცია.
+                  </p>
+                </div>
+                <div class="comment-actions">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/98bd0c7f1e485a5b97d8fb241c03074866f65852?placeholderIfAbsent=true"
+                    alt="Reply icon"
+                    class="action-icon"
+                  />
+                  <button class="reply-button">უპასუხე</button>
+                </div>
+              </div>
+            </div>
+      
+            <div class="comment">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/6077400242c0cf0586e8c3311586a94b61891fb0?placeholderIfAbsent=true"
+                alt="Natalia Giorgadze"
+                class="comment-avatar"
+              />
+              <div class="comment-content">
+                <div class="comment-body">
+                  <h3 class="comment-author">ნატალია გიორგაძე</h3>
+                  <p class="comment-text">
+                    დიზაინი სუფთად ჩანს, მაგრამ კოდირებისას მნიშვნელოვანი იქნება.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+            <div class="comment">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/488ae730c766a5fccdd4a79902dab10f83e89646?placeholderIfAbsent=true"
+                alt="Emilia Morgan"
+                class="comment-avatar"
+              />
+              <div class="comment-content">
+                <div class="comment-body">
+                  <h3 class="comment-author">ემილია მორგანი</h3>
+                  <p class="comment-text">
+                    დიზაინი სუფთად ჩანს, მაგრამ კოდირებისას მნიშვნელოვანი იქნება, რომ
+                    ელემენტებს ჰქონდეს შესაბამისი რეზოლუცია.
+                  </p>
+                </div>
+                <div class="comment-actions">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/a487f77284d33234789015525e42703aa43a0738?placeholderIfAbsent=true"
+                    alt="Reply icon"
+                    class="action-icon"
+                  />
+                  <button class="reply-button">უპასუხე</button>
+                </div>
+              </div>
+            </div>
+      
+            <div class="comment">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/488ae730c766a5fccdd4a79902dab10f83e89646?placeholderIfAbsent=true"
+                alt="Emilia Morgan"
+                class="comment-avatar"
+              />
+              <div class="comment-content">
+                <div class="comment-body">
+                  <h3 class="comment-author">ემილია მორგანი</h3>
+                  <p class="comment-text">
+                    დიზაინი სუფთად ჩანს, მაგრამ კოდი��ებისას მნიშვნელოვანი იქნება, რომ
+                    ელემენტებს ჰქონდეს შესაბამისი რეზოლუცია.
+                  </p>
+                </div>
+                <div class="comment-actions">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/428ab9b2bc7364dc5f313de0c4cf20e710496d31?placeholderIfAbsent=true"
+                    alt="Reply icon"
+                    class="action-icon"
+                  />
+                  <button class="reply-button">უპასუხე</button>
+                </div>
+              </div>
+            </div>
+      
+            <div class="comment">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/488ae730c766a5fccdd4a79902dab10f83e89646?placeholderIfAbsent=true"
+                alt="Emilia Morgan"
+                class="comment-avatar"
+              />
+              <div class="comment-content">
+                <div class="comment-body">
+                  <h3 class="comment-author">ემილია მორგანი</h3>
+                  <p class="comment-text">
+                    დიზაინი სუფთად ჩანს, მაგრამ კოდირებისას მნიშვნელოვანი იქნება, რ��მ
+                    ელემენტებს ჰქონდეს შესაბამისი რეზოლუცია.
+                  </p>
+                </div>
+                <div class="comment-actions">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/0b2bf6f0f77e0ed5a2a1b40c264613841787f51d?placeholderIfAbsent=true"
+                    alt="Reply icon"
+                    class="action-icon"
+                  />
+                  <button class="reply-button">უპასუხე</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </main>
+
+    <script src="./js/task-detail.js"></script>
+
+</body>
+</html>

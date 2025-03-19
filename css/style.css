@@ -30,7 +30,7 @@
 }
 
 .page-title {
-  margin-left: 140px;
+  margin-left: 120px; /* Adjusted for perfect alignment */
   display: flex;
   align-items: center;
   margin-top: 125px;
@@ -63,6 +63,57 @@
   border-radius: 5px;
   padding: 0 10px;
   cursor: pointer;
+  text-align: center;
+}
+
+#department-filter {
+    font-size: 16px;    
+    margin-top: 10px;
+    border: none;
+}
+#priority-filter {
+    font-size: 16px;
+    margin-top: 10px;
+    border: none;
+}
+#employee-filter{
+    font-size: 16px;
+    margin-top: 10px;
+    border: none;
+}
+
+.filter-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 688px;
+  height: 50px;
+  margin: 50px auto 0; /* 50px space from the top */
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px; /* Ensure spacing inside */
+  margin-left: 120px; /* Align filter box with 120px margin from the left */
+}
+
+.filters {
+  display: flex;
+  gap: 50px; /* Reduce gap so filters stay inside */
+  justify-content: space-around;
+  width: 100%;
+}
+
+.filter-content {
+  flex: 1;
+  text-align: center;
+}
+
+.filter-content select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .plus-icon {
@@ -71,60 +122,25 @@
   fill: white;
 }
 
-/* Filters */
-.filters {
-  display: inline-flex;
-  gap: 2.75rem;
-  align-items: center;
-  margin: 95px 0 80px 120px;
-  height: 2.75rem;
-  border: 1px solid #e6e6e6;
-  border-radius: 0.75rem;
-}
+.filters select:focus { border-color: var(--primary-color); }
+.filters select:focus + label,
+.filters select:focus + label .filter-icon { color: var(--primary-color); }
 
-.filter-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2.75rem;
-  border-radius: 0.375rem;
-  width: 199px;
-}
-
-.filter-content {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  padding: 0.625rem 1.25rem;
-  height: 2.75rem;
-  font-size: 1rem;
-  background-color: white;
-  border-radius: 0.75rem;
-  width: 199px;
-}
-
-.filter-content:first-child {
-  color: var(--primary-color);
-}
-
-.filter-content:not(:first-child) {
-  color: #1a1a1a;
-}
-
-/* Section Layout */
 .section-container {
   display: flex;
   justify-content: space-between;
-  gap: 53px;
+  gap: 48px;
   padding: 0 120px;
   align-items: flex-start;
-  width: 100%;
+  width: 1680px;
+  margin-top: 56px;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; 
+  padding-left: 0; 
 }
 
 /* Section Headers */
@@ -132,14 +148,21 @@
 .section-header2,
 .section-header3,
 .section-header4 {
-  font-size: 15pt;
+  font-size: 20pt;  /* Change font size to 20pt */
   font-weight: bold;
   text-align: center;
   color: white;
   padding: 10px;
   border-radius: 8px;
-  width: 100%;
+  width: 381px;  
+  height: 34px; 
   margin-bottom: 31px;
+  
+
+  display: flex;
+  justify-content: center;  
+  align-items: center;  /
+    
 }
 
 .section-header1 {
@@ -155,19 +178,20 @@
   background-color: var(--completed-color);
 }
 
-/* Sections */
+
 section {
   flex: 1;
   min-width: 250px;
   max-width: 350px;
-  height: 960px;
-  padding: 20px;
+  height: 100%;
+  padding: 20px 20px 20px 0; /* Remove left padding (0) */
   border-radius: 10px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+  border: none;
+  background-color: transparent;
   text-align: center;
 }
 
+/* Card Styles */
 .Muststart,
 .inprogress,
 .readytotest,
@@ -177,9 +201,29 @@ section {
   height: 55px;
   font-weight: bold;
   padding: 10px;
-  background-color: #e0e0e0;
+  background-color: transparent; 
   border-radius: 8px;
   text-align: center;
+}
+
+#muststart {
+  background-color: white;
+  border: none;
+  margin-left: 120px; /* Align with 120px margin */
+}
+#Must-start .card {
+  border: 2px solid rgb(253, 236, 0); /* Match border color to section color */
+}
+#in-progress .card {
+  border: 2px solid var(--progress-color);
+}
+
+#ready-to-test .card {
+  border: 2px solid var(--testing-color);
+}
+
+#finished .card {
+  border: 2px solid var(--completed-color);
 }
 
 /* Modal Styles */
@@ -196,7 +240,7 @@ section {
 }
 
 .modal {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: fixed;
   top: 50%;
@@ -358,3 +402,192 @@ section {
     margin-bottom: 20px;
   }
 }
+
+/* Operational Section Styles */
+.op-wrapper {
+  width: 688px;
+  height: 274px;
+  background-color: white;
+  border: #343a40;
+  border-radius: 5px;
+}
+
+/* Cards */
+.card {
+  width: 381px;  /* Fixed width */
+  height: 217px; /* Fixed height */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better look */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0; /* Align the cards to the left edge */
+  margin-bottom: 5px; /* Reduce bottom margin to 5px for better alignment */
+  box-sizing: border-box; /* Ensures padding and borders are included in the width */
+}
+
+.card-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Department Badge */
+.category-badge {
+  width: 88px;
+  height: 24px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: transparent; /* Remove background color */
+  background-size: cover; /* Ensure image covers the badge */
+  background-position: center; /* Center the image */
+}
+
+/* Apply background images based on department */
+.category-badge.marketing {
+  background-image: url('img/marketing.png');
+}
+
+.category-badge.design {
+  background-image: url('img/design.png');
+}
+
+.category-badge.logistics {
+  background-image: url('img/logistics.png');
+}
+
+.category-badge.IT {
+  background-image: url('img/IT.png');
+}
+
+.difficulty-badge {
+  width: 86px;
+  height: 26px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent; /* No background color */
+  background-size: cover; /* Ensure image covers the badge */
+  background-position: center; /* Center the image */
+}
+
+/* Apply background images based on priority */
+.difficulty-badge.high {
+  background-image: url('./img/high.png');
+}
+
+.difficulty-badge.medium {
+  background-image: url('./img/medium.png');
+}
+
+.difficulty-badge.low {
+  background-image: url('./img/low.png');
+}
+
+.card-content {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.card-footer .avatar {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-footer .category-badge {
+  margin-left: 10px; /* Add space between the badges */
+}
+
+.publish-date {
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+}
+
+.card-footer .avatar {
+  margin-left: 10px;
+}
+
+.card-footer span {
+  margin-left: 10px;
+}
+
+.publish-date {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Remove Text Decoration from Links */
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Left Align Title & Description with 30px Margin */
+.card-content {
+  text-align: left;
+  margin-left: 30px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #333;
+}
+
+
+.comment-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 22px;
+  height: 22px;
+}
+
+/* Style for filter labels */
+.filters label {
+  transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+/* You may also want to add styles for the icons inside the filter */
+.filter-icon {
+  transition: color 0.3s ease; /* Smooth transition for icon color */
+}
+
+
+
+/* card page detiles must go here */
+
