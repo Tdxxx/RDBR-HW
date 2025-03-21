@@ -91,6 +91,36 @@
     },
     {
       "id": 907,
+      "name": "გუნდის შექმნა",
+      "description": "დააკომპლექტოს გუნდი მომავალი პროექტისის",
+      "due_date": "2025-06-01T20:00:00.000000Z",
+      "department": {
+        "id": 1,
+        "name": "მარკეტინგის დეპარტამენტი"
+      },
+      "employee": {
+        "id": 908,
+        "name": "ნინო",
+        "surname": "გოგიჩაიშვილი",
+        "avatar": "https://momentum.redberryinternship.ge/storage/employee-avatars/SIG4lWZeTat4mc3t6E0TRjcMaMo31ypEqypa4IqT.jpg",
+        "department": {
+          "id": 1,
+          "name": "მარკეტინგის დეპარტამენტი"
+        }
+      },
+      "status": {
+        "id": 3,
+        "name": "მზად ტესტირებისთვის"
+      },
+      "priority": {
+        "id": 2,
+        "name": "საშუალო",
+        "icon": "https://momentum.redberryinternship.ge/storage/priority-icons/High.svg"
+      },
+      "total_comments": 0
+    },
+    {
+      "id": 907,
       "name": "საიტის ლოგიკის ფაილების კორექტირება",
       "description": "გადახედეთ კოდის ფაილებს და საჭიროების შემთხვევაშ გაასწორეთ ლოგიკა",
       "due_date": "2025-06-01T20:00:00.000000Z",
@@ -111,6 +141,36 @@
       "status": {
         "id": 3,
         "name": "მზად ტესტირებისთვის"
+      },
+      "priority": {
+        "id": 1,
+        "name": "დაბალი",
+        "icon": "https://momentum.redberryinternship.ge/storage/priority-icons/Low.svg"
+      },
+      "total_comments": 0
+    },
+    {
+      "id": 907,
+      "name": "საიტის ლოგიკის ფაილების კორექტირება",
+      "description": "გადახედეთ კოდის ფაილებს და საჭიროების შემთხვევაშ გაასწორეთ ლოგიკა",
+      "due_date": "2025-06-01T20:00:00.000000Z",
+      "department": {
+        "id": 2,
+        "name": "ადამიანური რესურსების დეპარტამენტი"
+      },
+      "employee": {
+        "id": 898,
+        "name": "ფი",
+        "surname": "დიდი",
+        "avatar": "https://momentum.redberryinternship.ge/storage/https://via.placeholder.com/640x480.png/00aa77?text=quae",
+        "department": {
+          "id": 2,
+          "name": "ადამიანური რესურსების დეპარტამენტი"
+        }
+      },
+      "status": {
+        "id": 4,
+        "name": "დასრულებული"
       },
       "priority": {
         "id": 1,

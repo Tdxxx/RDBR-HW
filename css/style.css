@@ -300,6 +300,7 @@ section {
   color: black;
   margin-bottom: 8px;
   font-family: sans-serif;
+  text-align: left;
 }
 
 .input-wrapper {
@@ -348,7 +349,7 @@ section {
   object-fit: contain;
 }
 
-/* Department Section */
+
 .department-group {
   margin-bottom: 45px;
   width: 384px;
@@ -380,7 +381,7 @@ section {
   object-fit: contain;
 }
 
-/* Modal Footer */
+
 .modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -407,14 +408,14 @@ section {
   cursor: pointer;
 }
 
-/* Media Queries */
+
 @media (max-width: 1920px) {
   .filters {
     margin-bottom: 20px;
   }
 }
 
-/* Operational Section Styles */
+
 .op-wrapper {
   width: 688px;
   height: 274px;
@@ -429,26 +430,26 @@ section {
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better look */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 0; /* Align the cards to the left edge */
-  margin-bottom: 30px; /* Reduce bottom margin to 5px for better alignment */
-  box-sizing: border-box; /* Ensures padding and borders are included in the width */
+  margin-left: 0; 
+  margin-bottom: 30px; 
+  box-sizing: border-box; 
 }
 
 .card-header {
   position: relative;
   display: flex;
-  justify-content: flex-start; /* Align the badges to the left */
+  justify-content: flex-start; 
   align-items: center;
   margin-bottom: 10px;
   background-color: white;
 }
 
-/* Department Badge */
+
 .category-badge {
   width: 50%;
   height: 31px;
@@ -502,9 +503,9 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent; /* No background color */
-  background-size: cover; /* Ensure image covers the badge */
-  background-position: center; /* Center the image */
+  background-color: transparent; 
+  background-size: cover; 
+  background-position: center; 
   position: relative;
 }
 
@@ -662,3 +663,32 @@ section {
 
 /* card page detiles must go here */
 
+/* For custom checkboxes in dropdowns */
+.custom-dropdown .option {
+  display: flex;
+  align-items: center;
+}
+
+.custom-dropdown .checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1;
+  width: 100%;
+}
+
+.custom-dropdown:hover .dropdown-content {
+  display: block;
+}

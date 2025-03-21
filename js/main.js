@@ -12,29 +12,25 @@ document.addEventListener("DOMContentLoaded", function () {
     if (modal) modal.style.display = "none";
     if (backdrop) backdrop.style.display = "none";
 
-    // Show modal function
     function showModal() {
         modal.style.display = "block";
         backdrop.style.display = "block";
     }
 
-    // Close modal function
     function closeModal() {
         modal.style.display = "none";
         backdrop.style.display = "none";
     }
 
-    // Event listeners for modal open and close
     if (addEmployeeButton) addEmployeeButton.addEventListener("click", showModal);
     if (closeButton) closeButton.addEventListener("click", closeModal);
     if (cancelButton) cancelButton.addEventListener("click", closeModal);
     if (backdrop) backdrop.addEventListener("click", closeModal);
 
-    // Fetch and populate employee select options
+    // Load employees
     fetch("bknd/employees.json")
         .then(response => response.json())
         .then(employees => {
-            console.log("Employees loaded:", employees);
             if (Array.isArray(employees)) {
                 employeeSelect.innerHTML = '<option value="">ყველა თანამშრომელი</option>';
                 employees.forEach(emp => {
@@ -43,17 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     option.textContent = `${emp.name} ${emp.surname}`;
                     employeeSelect.appendChild(option);
                 });
-            } else {
-                console.error("Unexpected format for employees:", employees);
             }
         })
         .catch(error => console.error("Error loading employees:", error));
 
-    // Fetch and populate department select options
+    // Load departments
     fetch("bknd/Departments.json")
         .then(response => response.json())
         .then(departments => {
-            console.log("Departments loaded:", departments);
             if (Array.isArray(departments)) {
                 departmentSelect.innerHTML = '<option value="">დეპარტამენტი</option>';
                 departments.forEach(department => {
@@ -62,91 +55,62 @@ document.addEventListener("DOMContentLoaded", function () {
                     option.textContent = department.name;
                     departmentSelect.appendChild(option);
                 });
-            } else {
-                console.error("Unexpected format for departments:", departments);
             }
         })
         .catch(error => console.error("Error loading departments:", error));
 
-        function createTaskCard(task) {
-            const card = document.createElement("div");
-            card.classList.add("card");
-        
-            // Determine which section the task belongs to
-            let sectionClass = "";
-            switch (task.status.name) {
-                case "დასაწყები": // "Must-start"
-                    sectionClass = "section-header1";
-                    break;
-                case "პროგრესში": // "In Progress"
-                    sectionClass = "section-header2";
-                    break;
-                case "მზად ტესტირებისთვის": // "Ready to Test"
-                    sectionClass = "section-header3";
-                    break;
-                case "დასრულებული": // "Finished"
-                    sectionClass = "section-header4";
-                    break;
-                default:
-                    sectionClass = "";
-                    break;
-            }
-        
-            // Find the section header element based on the class
-            const sectionHeader = document.querySelector(`.${sectionClass}`);
-            const sectionHeaderColor = sectionHeader ? window.getComputedStyle(sectionHeader).backgroundColor : "#ccc"; // Default to grey if not found
-        
-            // Set the card's border color to match the section header's background color
-            card.style.border = `2px solid ${sectionHeaderColor}`;
-        
-            card.innerHTML = `
-                <a href="task-detail.html?id=${task.id}" class="card-link">
-                   <div class="card-header" style="background-color: transparent;"> <!-- Set background to transparent -->
-                <!-- Priority Badge with Border Instead of Background -->
-                <div class="difficulty-badge" style="border: 2px solid ${task.priority.icon ? sectionHeaderColor : '#ccc'}; color: ${task.priority.icon ? sectionHeaderColor : '#ccc'};">
-                    <img src="${task.priority.icon}" alt="priority icon" class="difficulty-icon">
-                    ${task.priority.name}
-                </div>
-                        <!-- Department Badge -->
-                        <div class="category-badge ${task.department.name.toLowerCase().split(" ")[0]}">
-                            ${task.department.name.split(" ")[0]} <!-- Shortened department name -->
-                        </div>
-                    </div>
-        
-                    <div class="card-content">
-                        <h4 class="card-title">${task.name}</h4>
-                        <p class="card-description">
-                            ${task.description.length > 100 ? task.description.slice(0, 100) + "..." : task.description}
-                        </p>
-                    </div>
-        
-                    <!-- Publish Date (Deadline) in Top-Right Corner -->
-                    <span class="publish-date">${new Date(task.due_date).toLocaleDateString()}</span>
-        
-                    <div class="card-footer">
-                        <img src="${task.employee.avatar}" alt="employee avatar" class="avatar">
-                    </div>
-        
-                    <!-- Comments Icon (Bottom Right Corner) -->
-                    <img src="img/Comments.png" alt="comments icon" class="comment-icon">
-                </a>
-            `;
-        
-            return card;
-        }
+    function createTaskCard(task) {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-    // Load tasks and display them in respective sections based on status
+        // Map task status to corresponding section header class
+        const sectionMapping = {
+            "დასაწყები": "section-header1",
+            "პროგრესში": "section-header2",
+            "მზად ტესტირებისთვის": "section-header3",
+            "დასრულებული": "section-header4"
+        };
+
+        let sectionClass = sectionMapping[task.status.name] || "";
+        const sectionHeader = document.querySelector(`.${sectionClass}`);
+        const sectionHeaderColor = sectionHeader ? window.getComputedStyle(sectionHeader).backgroundColor : "#ccc";
+
+        card.style.border = `2px solid ${sectionHeaderColor}`;
+
+        card.innerHTML = `
+            <a href="task-detail.html?id=${task.id}" class="card-link">
+                <div class="card-header">
+                    <div class="difficulty-badge" style="border: 2px solid ${sectionHeaderColor};">
+                        ${task.priority.icon ? `<img src="${task.priority.icon}" alt="priority icon" class="difficulty-icon">` : ""}
+                        ${task.priority.name}
+                    </div>
+                    <div class="category-badge ${task.department.name.toLowerCase().split(" ")[0]}">
+                        ${task.department.name.split(" ")[0]}
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">${task.name}</h4>
+                    <p class="card-description">
+                        ${task.description.length > 100 ? task.description.slice(0, 100) + "..." : task.description}
+                    </p>
+                </div>
+                <span class="publish-date">${new Date(task.due_date).toLocaleDateString()}</span>
+                <div class="card-footer">
+                    <img src="${task.employee.avatar}" alt="employee avatar" class="avatar">
+                </div>
+                <img src="img/Comments.png" alt="comments icon" class="comment-icon">
+            </a>
+        `;
+
+        return card;
+    }
+
     function loadTasks() {
         fetch("bknd/tasks.json")
             .then(response => response.json())
             .then(tasks => {
-                console.log("Tasks loaded:", tasks);
-                if (!Array.isArray(tasks)) {
-                    console.error("Unexpected format for tasks:", tasks);
-                    return;
-                }
+                if (!Array.isArray(tasks)) return;
 
-                // Clear existing task cards
                 document.getElementById("Must-start").innerHTML = "";
                 document.getElementById("in-progress").innerHTML = "";
                 document.getElementById("ready-to-test").innerHTML = "";
@@ -156,59 +120,59 @@ document.addEventListener("DOMContentLoaded", function () {
                 const selectedDepartment = departmentSelect.value;
                 const selectedPriority = prioritySelect.value;
 
-                // Filter tasks based on selected filters
                 const filteredTasks = tasks.filter(task => {
-                    let employeeMatch = true;
-                    let departmentMatch = true;
-                    let priorityMatch = true;
-
-                    if (selectedEmployee) {
-                        employeeMatch = task.employee.id == selectedEmployee;
-                    }
-
-                    if (selectedDepartment) {
-                        departmentMatch = task.department.id == selectedDepartment;
-                    }
-
-                    if (selectedPriority) {
-                        priorityMatch = task.priority.name === selectedPriority;
-                    }
-
+                    let employeeMatch = selectedEmployee ? task.employee.id == selectedEmployee : true;
+                    let departmentMatch = selectedDepartment ? task.department.id == selectedDepartment : true;
+                    let priorityMatch = selectedPriority ? task.priority.name === selectedPriority : true;
                     return employeeMatch && departmentMatch && priorityMatch;
                 });
 
-                // Dynamically create task cards and append to the respective sections
                 filteredTasks.forEach(task => {
                     const card = createTaskCard(task);
-                    let section;
-                    switch (task.status.name) {
-                        case "დასაწყები":
-                            section = document.getElementById("Must-start");
-                            break;
-                        case "პროგრესში":
-                            section = document.getElementById("in-progress");
-                            break;
-                        case "მზად ტესტირებისთვის":
-                            section = document.getElementById("ready-to-test");
-                            break;
-                        case "დასრულებული":
-                            section = document.getElementById("finished");
-                            break;
-                    }
+                    let sectionId = {
+                        "დასაწყები": "Must-start",
+                        "პროგრესში": "in-progress",
+                        "მზად ტესტირებისთვის": "ready-to-test",
+                        "დასრულებული": "finished"
+                    }[task.status.name];
 
-                    if (section) {
-                        section.appendChild(card);
+                    if (sectionId) {
+                        document.getElementById(sectionId).appendChild(card);
                     }
                 });
             })
             .catch(error => console.error("Error loading tasks:", error));
     }
 
-    // Initial task loading
     loadTasks();
 
-    // Event listeners for filtering tasks
     employeeSelect.addEventListener("change", loadTasks);
     departmentSelect.addEventListener("change", loadTasks);
     prioritySelect.addEventListener("change", loadTasks);
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const avatarPreview = document.getElementById("avatar-preview");
+    const avatarInput = document.getElementById("avatar-input");
+
+    if (avatarPreview && avatarInput) {
+        // When the avatar is clicked, trigger the file input
+        avatarPreview.addEventListener("click", () => {
+            avatarInput.click();
+        });
+
+        // When a file is selected, update the preview image
+        avatarInput.addEventListener("change", (event) => {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    avatarPreview.src = e.target.result; // Update the image preview
+                };
+                reader.readAsDataURL(file); // Convert to base64 for preview
+            }
+        });
+    }
 });
