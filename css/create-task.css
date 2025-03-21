@@ -157,7 +157,7 @@
     font-family: inherit;
   }
   
-  /* Focus states for better accessibility */
+  
   .form-input:focus,
   .form-textarea:focus,
   .form-select:focus {
@@ -165,7 +165,7 @@
     outline-offset: -1px;
   }
   
-  /* Hover states */
+  
   .header__nav-button:hover,
   .submit-button:hover {
     background-color: #6610cc;

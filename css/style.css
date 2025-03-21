@@ -182,7 +182,7 @@
 section {
   flex: 1;
   min-width: 250px;
-  max-width: 350px;
+  max-width: 381px;
   height: 100%;
   padding: 20px 20px 20px 0; /* Remove left padding (0) */
   border-radius: 10px;
@@ -197,33 +197,44 @@ section {
 .readytotest,
 .finish {
   font-size: 20px;
-  width: 379px;
+  width: 401px;
   height: 55px;
   font-weight: bold;
   padding: 10px;
   background-color: transparent; 
   border-radius: 8px;
   text-align: center;
+  gap: 30px;
 }
 
 #muststart {
   background-color: white;
   border: none;
   margin-left: 120px; /* Align with 120px margin */
+  gap: 30px;
 }
-#Must-start .card {
-  border: 2px solid rgb(253, 236, 0); /* Match border color to section color */
+/* For all task cards */
+#muststart .card,
+#in-progress .card,
+#ready-to-test .card,
+#finished .card {
+  border: 2px solid; /* Force the border to be visible */
 }
+
+#muststart .card {
+  border-color: rgb(253, 236, 0); /* Yellow for Must Start */
+}
+
 #in-progress .card {
-  border: 2px solid var(--progress-color);
+  border-color: var(--progress-color); /* Orange for In Progress */
 }
 
 #ready-to-test .card {
-  border: 2px solid var(--testing-color);
+  border-color: var(--testing-color); /* Pink for Ready to Test */
 }
 
 #finished .card {
-  border: 2px solid var(--completed-color);
+  border-color: var(--completed-color); /* Blue for Finished */
 }
 
 /* Modal Styles */
@@ -412,10 +423,9 @@ section {
   border-radius: 5px;
 }
 
-/* Cards */
 .card {
-  width: 381px;  /* Fixed width */
-  height: 217px; /* Fixed height */
+  width: 401px; 
+  height: 217px; 
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
@@ -425,81 +435,117 @@ section {
   flex-direction: column;
   justify-content: space-between;
   margin-left: 0; /* Align the cards to the left edge */
-  margin-bottom: 5px; /* Reduce bottom margin to 5px for better alignment */
+  margin-bottom: 30px; /* Reduce bottom margin to 5px for better alignment */
   box-sizing: border-box; /* Ensures padding and borders are included in the width */
 }
 
 .card-header {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /* Align the badges to the left */
   align-items: center;
   margin-bottom: 10px;
+  background-color: white;
 }
 
 /* Department Badge */
 .category-badge {
-  width: 88px;
-  height: 24px;
+  width: 50%;
+  height: 31px;
   text-align: center;
-  color: white;
+  background-color:var(--primary-color);
+  color: rgb(255, 255, 255);
   font-weight: bold;
-  border-radius: 20px;
-  padding: 5px 10px;
-  background-color: transparent; /* Remove background color */
-  background-size: cover; /* Ensure image covers the badge */
-  background-position: center; /* Center the image */
-}
-
-/* Apply background images based on department */
-.category-badge.marketing {
-  background-image: url('img/marketing.png');
-}
-
-.category-badge.design {
-  background-image: url('img/design.png');
-}
-
-.category-badge.logistics {
-  background-image: url('img/logistics.png');
-}
-
-.category-badge.IT {
-  background-image: url('img/IT.png');
-}
-
-.difficulty-badge {
-  width: 86px;
-  height: 26px;
   border-radius: 13px;
+  margin-left: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  position: relative;
+}
+
+/* Apply department badge colors */
+.category-badge.admin {
+  border: #C71E67; /* Admin */
+}
+
+.category-badge.hr {
+  background-color: #C71E21; /* HR */
+}
+
+.category-badge.finance {
+  background-color: #FFD86D; /* Finance */
+}
+
+.category-badge.marketing {
+  background-color: #FD9A6A; /* Marketing */
+}
+
+.category-badge.logistics {
+  background-color: #89B6FF; /* Logistics */
+}
+
+.category-badge.it {
+  background-color: #FFD87D; /* IT */
+}
+
+.category-badge.media {
+  background-color: #FF66A8; /* Media */
+}
+
+/* Difficulty Badge */
+.difficulty-badge {
+  width: 93px;
+  height: 31px;
+  border-radius: 13px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent; /* No background color */
   background-size: cover; /* Ensure image covers the badge */
   background-position: center; /* Center the image */
+  position: relative;
 }
 
-/* Apply background images based on priority */
-.difficulty-badge.high {
-  background-image: url('./img/high.png');
+/* Assign appropriate colors for Difficulty Badges */
+.difficulty-badge.muststart {
+  background-color: rgb(253, 236, 0); /* Must start */
 }
 
-.difficulty-badge.medium {
-  background-image: url('./img/medium.png');
+.difficulty-badge.inprogress {
+  background-color: var(--progress-color); /* In Progress */
 }
 
-.difficulty-badge.low {
-  background-image: url('./img/low.png');
+.difficulty-badge.readytotest {
+  background-color: var(--testing-color); /* Ready to Test */
 }
 
-.card-content {
-  flex: 1;
-  font-size: 14px;
-  color: #333;
+.difficulty-badge.finish {
+  background-color: var(--completed-color); /* Finish */
+}
+
+/* Card Content */
+.card {
+  width: 401px;
+  height: 217px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .card-footer {
@@ -520,9 +566,34 @@ section {
 }
 
 .card-footer .category-badge {
-  margin-left: 10px; /* Add space between the badges */
+  margin-left: 10px;
 }
 
+/* Publish Date (Deadline) Styling */
+.publish-date {
+  font-size: 12px;
+  color: #555;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+/* Comments Icon */
+.comment-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 20px;
+  height: auto;
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+}
 .publish-date {
   font-size: 14px;
   color: #555;
